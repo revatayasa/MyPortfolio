@@ -152,6 +152,15 @@
       background: currentColor;
       opacity: 0.15;
     }
+
+    /* ── PROFILE PHOTO ── */
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: inherit;
+    }
   </style>
 </head>
 <body>
@@ -209,15 +218,7 @@
     <div class="hero-right reveal" style="transition-delay: 0.2s">
       <div class="photo-wrap">
         <div class="photo-frame">
-          <!-- Ganti src dengan path foto Anda, lalu hapus div.photo-placeholder -->
-          <!-- <img src="foto-anda.jpg" alt="Foto Profil Revata Yasa Lienardi" /> -->
-          <div class="photo-placeholder">
-            <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            <span>Foto Anda</span>
-          </div>
+          <img src="img/ProfilePict.png" alt="Foto Profil Revata Yasa Lienardi" />
         </div>
         <div class="photo-decor-1"></div>
         <div class="photo-decor-2"></div>
@@ -378,7 +379,7 @@
       </div>
 
       <div class="exp-item reveal">
-        <div class="exp-period">2025 - Sekarang</div>
+        <div class="exp-period">2025 — Sekarang</div>
         <div>
           <h3 class="exp-role">Export Coordinator (Parfume Products)</h3>
           <p class="exp-company">Self-Employed</p>
