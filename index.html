@@ -39,18 +39,6 @@
     .project-card:hover .project-thumb img {
       transform: scale(1.04);
     }
-    .project-thumb-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #aaa;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-    }
     .project-body {
       padding: 1.5rem;
     }
@@ -161,6 +149,50 @@
       object-position: center top;
       border-radius: inherit;
     }
+
+    /* ── LANGUAGE TOGGLE BUTTON ── */
+    #lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: transparent;
+      border: 1.5px solid rgba(0, 0, 0, 0.18);
+      border-radius: 999px;
+      padding: 0;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+      height: 30px;
+      user-select: none;
+    }
+    #lang-toggle:hover {
+      border-color: rgba(0, 0, 0, 0.5);
+    }
+    #lang-toggle .lang-active {
+      background: #111;
+      color: #fff;
+      padding: 0 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      border-radius: 999px;
+      transition: background 0.25s ease;
+    }
+    #lang-toggle .lang-inactive {
+      color: #555;
+      padding: 0 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      transition: color 0.25s ease;
+    }
+    #lang-toggle:hover .lang-inactive {
+      color: #111;
+    }
   </style>
 </head>
 <body>
@@ -169,11 +201,18 @@
   <nav>
     <a href="#hero" class="nav-logo">Revata Yasa Lienardi</a>
     <ul class="nav-links">
-      <li><a href="#about">Tentang</a></li>
-      <li><a href="#skills">Keahlian</a></li>
-      <li><a href="#experience">Pengalaman</a></li>
-      <li><a href="#projects">Proyek</a></li>
-      <li><a href="#contact">Kontak</a></li>
+      <li><a href="#about"      data-i18n="nav-about">Tentang</a></li>
+      <li><a href="#skills"     data-i18n="nav-skills">Keahlian</a></li>
+      <li><a href="#experience" data-i18n="nav-experience">Pengalaman</a></li>
+      <li><a href="#projects"   data-i18n="nav-projects">Proyek</a></li>
+      <li><a href="#contact"    data-i18n="nav-contact">Kontak</a></li>
+      <li>
+        <!-- Language Toggle Button -->
+        <button id="lang-toggle" onclick="toggleLang()" aria-label="Switch to English">
+          <span class="lang-active">IND</span>
+          <span class="lang-inactive">ENG</span>
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -183,12 +222,12 @@
     <div class="hero-number">01</div>
 
     <div class="hero-left reveal">
-      <p class="hero-eyebrow">Selamat Datang</p>
-      <h1 class="hero-name">Revata<br /><em>Yasa Lienardi</em></h1>
+      <p class="hero-eyebrow" data-i18n="hero-eyebrow">Selamat Datang</p>
+      <h1 class="hero-name" data-i18n="hero-name">Revata<br /><em>Yasa Lienardi</em></h1>
       <p class="hero-tagline">
         <span id="typed-text"></span><span class="typed-cursor">|</span>
       </p>
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n="hero-desc">
         Saya seorang Web Developer yang berfokus membangun website yang tidak hanya
         terlihat bagus, tapi juga cepat, responsif, dan mudah digunakan. Di sini Anda
         bisa melihat perjalanan dan karya-karya saya.
@@ -196,22 +235,22 @@
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="hero-stat-number">2+</span>
-          <span class="hero-stat-label">Tahun Pengalaman</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-exp">Tahun Pengalaman</span>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
           <span class="hero-stat-number">10+</span>
-          <span class="hero-stat-label">Proyek Selesai</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-proj">Proyek Selesai</span>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
           <span class="hero-stat-number">3</span>
-          <span class="hero-stat-label">Bahasa</span>
+          <span class="hero-stat-label" data-i18n="hero-stat-lang">Bahasa</span>
         </div>
       </div>
       <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Hubungi Saya</a>
-        <a href="#about" class="btn-outline">Pelajari Lebih</a>
+        <a href="#contact" class="btn-primary" data-i18n="hero-cta-contact">Hubungi Saya</a>
+        <a href="#about"   class="btn-outline"  data-i18n="hero-cta-about">Pelajari Lebih</a>
       </div>
     </div>
 
@@ -228,49 +267,49 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label">01 — Tentang Saya</p>
-    <h2 class="section-title">Kenali <em>Lebih Jauh</em></h2>
+    <p class="section-label" data-i18n="section-label-about">01 — Tentang Saya</p>
+    <h2 class="section-title"     data-i18n="section-title-about">Kenali <em>Lebih Jauh</em></h2>
 
     <div class="about-grid">
       <div class="about-facts reveal">
         <div class="fact-row">
-          <span class="fact-label">Nama Lengkap</span>
+          <span class="fact-label" data-i18n="fact-label-name">Nama Lengkap</span>
           <span class="fact-value">Revata Yasa Lienardi</span>
         </div>
         <div class="fact-row">
-          <span class="fact-label">Tempat, Tanggal Lahir</span>
-          <span class="fact-value">Bandung, 30 September 2004</span>
+          <span class="fact-label" data-i18n="fact-label-born">Tempat, Tanggal Lahir</span>
+          <span class="fact-value" data-i18n="fact-value-born">Bandung, 30 September 2004</span>
         </div>
         <div class="fact-row">
-          <span class="fact-label">Domisili</span>
-          <span class="fact-value">Bandung, Jawa Barat</span>
+          <span class="fact-label" data-i18n="fact-label-domicile">Domisili</span>
+          <span class="fact-value" data-i18n="fact-value-domicile">Bandung, Jawa Barat</span>
         </div>
         <div class="fact-row">
-          <span class="fact-label">Pendidikan Terakhir</span>
+          <span class="fact-label" data-i18n="fact-label-edu">Pendidikan Terakhir</span>
           <span class="fact-value">Universitas Katolik Parahyangan</span>
         </div>
         <div class="fact-row">
-          <span class="fact-label">Bidang</span>
+          <span class="fact-label" data-i18n="fact-label-field">Bidang</span>
           <span class="fact-value">Informatika</span>
         </div>
       </div>
 
       <div class="about-text reveal" style="transition-delay: 0.15s">
-        <p>
+        <p data-i18n="about-p1">
           Perkenalkan, saya <strong>Revata Yasa Lienardi</strong> — seorang Web Developer
           dengan keahlian mendalam di bidang UI/UX. Saya memiliki passion yang kuat terhadap
           menciptakan antarmuka yang intuitif, estetis, dan menyenangkan untuk digunakan,
           serta berkomitmen untuk menghadirkan pengalaman digital terbaik di setiap proyek
           yang saya kerjakan.
         </p>
-        <p>
+        <p data-i18n="about-p2">
           Dengan pengalaman lebih dari <strong>2 tahun</strong> di industri ini, saya telah
           berhasil menangani berbagai proyek nyata — mulai dari membangun website resmi
           <strong>Kasih Paramitha School</strong> hingga website restoran burger yang menarik
           dan fungsional. Saya percaya bahwa <strong>kolaborasi, kreativitas, dan ketekunan</strong>
           adalah kunci kesuksesan dalam setiap proyek.
         </p>
-        <p>
+        <p data-i18n="about-p3">
           Di luar pekerjaan, saya menikmati olahraga. Hal ini membantu saya menjaga
           keseimbangan dan terus berkembang sebagai pribadi maupun profesional.
         </p>
@@ -280,14 +319,14 @@
 
   <!-- SKILLS -->
   <section id="skills">
-    <p class="section-label">02 — Keahlian</p>
-    <h2 class="section-title">Apa yang <em>Saya Kuasai</em></h2>
+    <p class="section-label" data-i18n="section-label-skills">02 — Keahlian</p>
+    <h2 class="section-title"     data-i18n="section-title-skills">Apa yang <em>Saya Kuasai</em></h2>
 
     <div class="skills-grid">
       <div class="skill-card reveal">
         <span class="skill-icon">◈</span>
-        <h3 class="skill-name">UI/UX Design</h3>
-        <p class="skill-desc">Merancang antarmuka yang intuitif dan estetis, dengan fokus pada pengalaman pengguna yang mulus dan menyenangkan.</p>
+        <h3 class="skill-name" data-i18n="skill-uiux-name">UI/UX Design</h3>
+        <p class="skill-desc"  data-i18n="skill-uiux-desc">Merancang antarmuka yang intuitif dan estetis, dengan fokus pada pengalaman pengguna yang mulus dan menyenangkan.</p>
         <div class="skill-tags">
           <span class="tag">Figma</span>
           <span class="tag">Wireframing</span>
@@ -297,8 +336,8 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.1s">
         <span class="skill-icon">◇</span>
-        <h3 class="skill-name">Frontend Development</h3>
-        <p class="skill-desc">Membangun tampilan website yang responsif dan interaktif dengan kode yang bersih dan terstruktur.</p>
+        <h3 class="skill-name" data-i18n="skill-fe-name">Frontend Development</h3>
+        <p class="skill-desc"  data-i18n="skill-fe-desc">Membangun tampilan website yang responsif dan interaktif dengan kode yang bersih dan terstruktur.</p>
         <div class="skill-tags">
           <span class="tag">HTML</span>
           <span class="tag">CSS</span>
@@ -308,8 +347,8 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.2s">
         <span class="skill-icon">○</span>
-        <h3 class="skill-name">Web Development</h3>
-        <p class="skill-desc">Mengembangkan website dari konsep hingga deployment, memastikan performa, keamanan, dan skalabilitas.</p>
+        <h3 class="skill-name" data-i18n="skill-web-name">Web Development</h3>
+        <p class="skill-desc"  data-i18n="skill-web-desc">Mengembangkan website dari konsep hingga deployment, memastikan performa, keamanan, dan skalabilitas.</p>
         <div class="skill-tags">
           <span class="tag">React</span>
           <span class="tag">Node.js</span>
@@ -319,8 +358,8 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.3s">
         <span class="skill-icon">□</span>
-        <h3 class="skill-name">Responsive Design</h3>
-        <p class="skill-desc">Memastikan setiap website tampil sempurna di semua perangkat — desktop, tablet, maupun smartphone.</p>
+        <h3 class="skill-name" data-i18n="skill-resp-name">Responsive Design</h3>
+        <p class="skill-desc"  data-i18n="skill-resp-desc">Memastikan setiap website tampil sempurna di semua perangkat — desktop, tablet, maupun smartphone.</p>
         <div class="skill-tags">
           <span class="tag">Mobile First</span>
           <span class="tag">CSS Grid</span>
@@ -330,8 +369,8 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.4s">
         <span class="skill-icon">◉</span>
-        <h3 class="skill-name">DevOps</h3>
-        <p class="skill-desc">Mengelola proses deployment dan kolaborasi tim menggunakan GitHub untuk memastikan alur kerja yang terorganisir dan efisien.</p>
+        <h3 class="skill-name" data-i18n="skill-devops-name">DevOps</h3>
+        <p class="skill-desc"  data-i18n="skill-devops-desc">Mengelola proses deployment dan kolaborasi tim menggunakan GitHub untuk memastikan alur kerja yang terorganisir dan efisien.</p>
         <div class="skill-tags">
           <span class="tag">GitHub</span>
           <span class="tag">Git</span>
@@ -341,8 +380,8 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.5s">
         <span class="skill-icon">▣</span>
-        <h3 class="skill-name">Microsoft Office</h3>
-        <p class="skill-desc">Mahir mengoperasikan berbagai aplikasi Microsoft Office untuk kebutuhan dokumentasi, analisis data, dan presentasi profesional.</p>
+        <h3 class="skill-name" data-i18n="skill-ms-name">Microsoft Office</h3>
+        <p class="skill-desc"  data-i18n="skill-ms-desc">Mahir mengoperasikan berbagai aplikasi Microsoft Office untuk kebutuhan dokumentasi, analisis data, dan presentasi profesional.</p>
         <div class="skill-tags">
           <span class="tag">Word</span>
           <span class="tag">Excel</span>
@@ -352,12 +391,12 @@
 
       <div class="skill-card reveal" style="transition-delay: 0.6s">
         <span class="skill-icon">◎</span>
-        <h3 class="skill-name">Multibahasa</h3>
-        <p class="skill-desc">Mampu berkomunikasi secara profesional dalam tiga bahasa, memudahkan kolaborasi dengan klien dan tim dari berbagai latar belakang.</p>
+        <h3 class="skill-name" data-i18n="skill-lang-name">Multibahasa</h3>
+        <p class="skill-desc"  data-i18n="skill-lang-desc">Mampu berkomunikasi secara profesional dalam tiga bahasa, memudahkan kolaborasi dengan klien dan tim dari berbagai latar belakang.</p>
         <div class="skill-tags">
-          <span class="tag">Indonesia</span>
-          <span class="tag">Inggris</span>
-          <span class="tag">Mandarin</span>
+          <span class="tag" data-i18n="skill-lang-tag-1">Indonesia</span>
+          <span class="tag" data-i18n="skill-lang-tag-2">Inggris</span>
+          <span class="tag" data-i18n="skill-lang-tag-3">Mandarin</span>
         </div>
       </div>
     </div>
@@ -365,43 +404,43 @@
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <p class="section-label">03 — Pengalaman</p>
-    <h2 class="section-title">Rekam <em>Jejak</em></h2>
+    <p class="section-label" data-i18n="section-label-exp">03 — Pengalaman</p>
+    <h2 class="section-title"     data-i18n="section-title-exp">Rekam <em>Jejak</em></h2>
 
     <div class="exp-list">
       <div class="exp-item reveal">
         <div class="exp-period">2023 — Sekarang</div>
         <div>
-          <h3 class="exp-role">Freelance Digital Assistant</h3>
-          <p class="exp-company">Self-Employed</p>
-          <p class="exp-desc">Memberikan layanan freelance seperti data entry, pengelolaan database, serta dukungan digital untuk pembuatan dan pengelolaan website. Bekerja secara mandiri untuk membantu klien menyelesaikan tugas administrasi dan kebutuhan teknis secara efisien.</p>
+          <h3 class="exp-role"    data-i18n="exp1-role">Freelance Digital Assistant</h3>
+          <p class="exp-company"  data-i18n="exp1-company">Self-Employed</p>
+          <p class="exp-desc"     data-i18n="exp1-desc">Memberikan layanan freelance seperti data entry, pengelolaan database, serta dukungan digital untuk pembuatan dan pengelolaan website. Bekerja secara mandiri untuk membantu klien menyelesaikan tugas administrasi dan kebutuhan teknis secara efisien.</p>
         </div>
       </div>
 
       <div class="exp-item reveal">
         <div class="exp-period">2025 — Sekarang</div>
         <div>
-          <h3 class="exp-role">Export Coordinator (Parfume Products)</h3>
-          <p class="exp-company">Self-Employed</p>
-          <p class="exp-desc">Mengelola proses ekspor produk parfum termasuk koordinasi pengiriman, komunikasi dengan pihak terkait, serta memastikan proses pengiriman barang ke luar negeri berjalan dengan lancar.</p>
+          <h3 class="exp-role"    data-i18n="exp2-role">Export Coordinator (Parfume Products)</h3>
+          <p class="exp-company"  data-i18n="exp2-company">Self-Employed</p>
+          <p class="exp-desc"     data-i18n="exp2-desc">Mengelola proses ekspor produk parfum termasuk koordinasi pengiriman, komunikasi dengan pihak terkait, serta memastikan proses pengiriman barang ke luar negeri berjalan dengan lancar.</p>
         </div>
       </div>
 
       <div class="exp-item reveal">
         <div class="exp-period">2025</div>
         <div>
-          <h3 class="exp-role">Seafood Trader (Ebi)</h3>
-          <p class="exp-company">Self-Employed</p>
-          <p class="exp-desc">Menjalankan perdagangan seafood secara mandiri dengan fokus pada produk ebi. Bertanggung jawab atas proses sourcing produk, pengelolaan stok, negosiasi dengan pembeli, serta pengaturan distribusi kepada pelanggan.</p>
+          <h3 class="exp-role"    data-i18n="exp3-role">Seafood Trader (Ebi)</h3>
+          <p class="exp-company"  data-i18n="exp3-company">Self-Employed</p>
+          <p class="exp-desc"     data-i18n="exp3-desc">Menjalankan perdagangan seafood secara mandiri dengan fokus pada produk ebi. Bertanggung jawab atas proses sourcing produk, pengelolaan stok, negosiasi dengan pembeli, serta pengaturan distribusi kepada pelanggan.</p>
         </div>
       </div>
 
       <div class="exp-item reveal">
         <div class="exp-period">2019 — 2022</div>
         <div>
-          <h3 class="exp-role">Chief Operational Officer</h3>
-          <p class="exp-company">SideWLK</p>
-          <p class="exp-desc">Mengawasi dan mengelola seluruh operasional brand clothing SideWLK, termasuk manajemen stok, pengelolaan pesanan, dan koordinasi dengan supplier. Melakukan analisis tren fashion untuk menentukan produk yang sesuai dengan permintaan pasar serta melakukan outreach dan presentasi produk kepada calon pelanggan untuk meningkatkan awareness dan penjualan brand.</p>
+          <h3 class="exp-role"    data-i18n="exp4-role">Chief Operational Officer</h3>
+          <p class="exp-company"  data-i18n="exp4-company">SideWLK</p>
+          <p class="exp-desc"     data-i18n="exp4-desc">Mengawasi dan mengelola seluruh operasional brand clothing SideWLK, termasuk manajemen stok, pengelolaan pesanan, dan koordinasi dengan supplier. Melakukan analisis tren fashion untuk menentukan produk yang sesuai dengan permintaan pasar serta melakukan outreach dan presentasi produk kepada calon pelanggan untuk meningkatkan awareness dan penjualan brand.</p>
         </div>
       </div>
     </div>
@@ -409,8 +448,8 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <p class="section-label">04 — Proyek</p>
-    <h2 class="section-title">Karya <em>Nyata</em></h2>
+    <p class="section-label" data-i18n="section-label-projects">04 — Proyek</p>
+    <h2 class="section-title"     data-i18n="section-title-projects">Karya <em>Nyata</em></h2>
 
     <div class="projects-grid">
 
@@ -419,8 +458,8 @@
           <img src="img/kasih-paramitha.png" alt="Kasih Paramitha School" />
         </div>
         <div class="project-body">
-          <h3 class="project-title">Kasih Paramitha School</h3>
-          <p class="project-desc">Website resmi sekolah Kasih Paramitha yang menampilkan informasi akademik, galeri kegiatan, dan informasi kegiatan terbaru dari sekolah Kasih Paramitha</p>
+          <h3 class="project-title" data-i18n="proj1-title">Kasih Paramitha School</h3>
+          <p class="project-desc"   data-i18n="proj1-desc">Website resmi sekolah Kasih Paramitha yang menampilkan informasi akademik, galeri kegiatan, dan informasi kegiatan terbaru dari sekolah Kasih Paramitha</p>
           <div class="project-tags">
             <span class="tag">HTML</span>
             <span class="tag">CSS</span>
@@ -430,7 +469,7 @@
           <div class="project-links">
             <a href="https://kasihparamithaschool.sch.id" target="_blank" class="project-btn project-btn-primary">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Lihat Demo
+              <span data-i18n="btn-demo">Lihat Demo</span>
             </a>
             <a href="https://github.com/ahengg/kasihparamithaschool" target="_blank" class="project-btn project-btn-outline">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
@@ -445,8 +484,8 @@
           <img src="img/burger.png" alt="Website Restoran Burger" />
         </div>
         <div class="project-body">
-          <h3 class="project-title">Website Restoran Burger</h3>
-          <p class="project-desc">Website restoran burger yang menampilkan menu interaktif, sistem pemesanan online, serta desain yang menarik dan ramah pengguna di semua perangkat.</p>
+          <h3 class="project-title" data-i18n="proj2-title">Website Restoran Burger</h3>
+          <p class="project-desc"   data-i18n="proj2-desc">Website restoran burger yang menampilkan menu interaktif, sistem pemesanan online, serta desain yang menarik dan ramah pengguna di semua perangkat.</p>
           <div class="project-tags">
             <span class="tag">React</span>
             <span class="tag">Node.js</span>
@@ -455,7 +494,7 @@
           <div class="project-links">
             <a href="https://revatayasa.github.io/Burger/" target="_blank" class="project-btn project-btn-primary">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Lihat Demo
+              <span data-i18n="btn-demo">Lihat Demo</span>
             </a>
             <a href="https://github.com/revatayasa/Burger" target="_blank" class="project-btn project-btn-outline">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
@@ -470,12 +509,12 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <p class="section-label">05 — Kontak</p>
-    <h2 class="section-title">Mari <em>Terhubung</em></h2>
+    <p class="section-label" data-i18n="section-label-contact">05 — Kontak</p>
+    <h2 class="section-title"     data-i18n="section-title-contact">Mari <em>Terhubung</em></h2>
 
     <div class="contact-inner">
       <div class="reveal">
-        <p class="contact-intro">
+        <p class="contact-intro" data-i18n="contact-intro">
           Saya selalu terbuka untuk peluang baru, kolaborasi, atau sekadar berdiskusi.
           Jangan ragu untuk menghubungi saya melalui salah satu saluran berikut.
         </p>
@@ -483,14 +522,14 @@
           <a href="mailto:revatayasalienardi@gmail.com" class="contact-link">
             <div class="contact-link-icon">✉</div>
             <div>
-              <div class="contact-link-type">Email</div>
+              <div class="contact-link-type" data-i18n="contact-type-email">Email</div>
               revatayasalienardi@gmail.com
             </div>
           </a>
           <a href="tel:+6282152555898" class="contact-link">
             <div class="contact-link-icon">☎</div>
             <div>
-              <div class="contact-link-type">Telepon</div>
+              <div class="contact-link-type" data-i18n="contact-type-phone">Telepon</div>
               +62 821-5255-5898
             </div>
           </a>
@@ -521,51 +560,46 @@
 
       <div class="contact-form reveal" style="transition-delay: 0.15s">
         <div class="form-group">
-          <label class="form-label">Nama Anda</label>
+          <label class="form-label" data-i18n="form-label-name">Nama Anda</label>
           <input type="text" class="form-input" id="form-name" placeholder="Masukkan nama Anda" />
         </div>
         <div class="form-group">
-          <label class="form-label">Email</label>
+          <label class="form-label" data-i18n="form-label-email">Email</label>
           <input type="email" class="form-input" id="form-email" placeholder="email@domain.com" />
         </div>
         <div class="form-group">
-          <label class="form-label">Pesan</label>
+          <label class="form-label" data-i18n="form-label-message">Pesan</label>
           <textarea class="form-textarea" id="form-message" placeholder="Tuliskan pesan Anda di sini..."></textarea>
         </div>
-        <button class="btn-primary" id="btn-send" type="button">Kirim Pesan</button>
+        <button class="btn-primary" id="btn-send" type="button" data-i18n="btn-send">Kirim Pesan</button>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-copy">© 2026 — Hak cipta dilindungi</span>
+    <span class="footer-copy" data-i18n="footer-copy">© 2026 — Hak cipta dilindungi</span>
     <span class="footer-name">Revata Yasa Lienardi</span>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/lang.js"></script>
   <script>
-    // Typed animation
-    const phrases = [
-      'Frontend Developer',
-      'UI/UX Enthusiast',
-      'Web Developer',
-      'React & Node.js'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typedEl = document.getElementById('typed-text');
+    // ── Typed Animation (integrated with lang.js) ──────────────
+    let typedPhrases = ["Frontend Developer", "UI/UX Enthusiast", "Web Developer", "React & Node.js"];
+    let phraseIndex  = 0;
+    let charIndex    = 0;
+    let isDeleting   = false;
+    let typedTimer   = null;
+    const typedEl    = document.getElementById("typed-text");
 
     function type() {
-      const current = phrases[phraseIndex];
-      if (isDeleting) {
-        typedEl.textContent = current.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typedEl.textContent = current.substring(0, charIndex + 1);
-        charIndex++;
-      }
+      const current = typedPhrases[phraseIndex];
+      typedEl.textContent = isDeleting
+        ? current.substring(0, charIndex - 1)
+        : current.substring(0, charIndex + 1);
+
+      isDeleting ? charIndex-- : charIndex++;
 
       let delay = isDeleting ? 60 : 100;
 
@@ -574,12 +608,23 @@
         isDeleting = true;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
+        phraseIndex = (phraseIndex + 1) % typedPhrases.length;
         delay = 300;
       }
 
-      setTimeout(type, delay);
+      typedTimer = setTimeout(type, delay);
     }
+
+    // Allow lang.js to restart typed animation with new phrases
+    window._restartTyped = function(newPhrases) {
+      clearTimeout(typedTimer);
+      typedPhrases = newPhrases;
+      phraseIndex  = 0;
+      charIndex    = 0;
+      isDeleting   = false;
+      typedEl.textContent = "";
+      typedTimer = setTimeout(type, 400);
+    };
 
     setTimeout(type, 800);
   </script>
