@@ -6,6 +6,7 @@
 const translations = {
   id: {
     // NAV
+    "nav-logo":       "Portfolio Saya",
     "nav-about":      "Tentang",
     "nav-skills":     "Keahlian",
     "nav-experience": "Pengalaman",
@@ -104,6 +105,7 @@ const translations = {
 
   en: {
     // NAV
+    "nav-logo":       "My Portfolio",
     "nav-about":      "About",
     "nav-skills":     "Skills",
     "nav-experience": "Experience",
