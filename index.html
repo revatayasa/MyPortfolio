@@ -584,6 +584,11 @@
 
   <script src="js/main.js"></script>
   <script src="js/lang.js"></script>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("NphLQ7kHBfUfaqUfJ");
+  </script>
   <script>
     // ── Typed Animation (integrated with lang.js) ──────────────
     let typedPhrases = ["Frontend Developer", "UI/UX Enthusiast", "Web Developer", "React & Node.js"];
@@ -627,6 +632,45 @@
     };
 
     setTimeout(type, 800);
+  </script>
+
+  <script>
+    // ── EmailJS Contact Form ───────────────────────────────────
+    document.getElementById("btn-send").addEventListener("click", function () {
+      const name    = document.getElementById("form-name").value.trim();
+      const email   = document.getElementById("form-email").value.trim();
+      const message = document.getElementById("form-message").value.trim();
+
+      if (!name || !email || !message) {
+        alert("Harap isi semua field terlebih dahulu.");
+        return;
+      }
+
+      const btn = document.getElementById("btn-send");
+      btn.disabled = true;
+      btn.textContent = "Mengirim...";
+
+      emailjs.send("service_2h8cawi", "template_0mjjzvn", {
+        from_name:  name,
+        from_email: email,
+        message:    message,
+        to_name:    "Revata",
+      })
+      .then(() => {
+        alert("✅ Pesan berhasil dikirim! Terima kasih, " + name + ".");
+        document.getElementById("form-name").value    = "";
+        document.getElementById("form-email").value   = "";
+        document.getElementById("form-message").value = "";
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        alert("❌ Gagal mengirim pesan. Coba lagi nanti.");
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = "Kirim Pesan";
+      });
+    });
   </script>
 </body>
 </html>
