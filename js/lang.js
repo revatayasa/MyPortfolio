@@ -81,6 +81,10 @@ const translations = {
     "proj1-desc":  "Website resmi sekolah Kasih Paramitha yang menampilkan informasi akademik, galeri kegiatan, dan informasi kegiatan terbaru dari sekolah Kasih Paramitha",
     "proj2-title": "Website Restoran Burger",
     "proj2-desc":  "Website restoran burger yang menampilkan menu interaktif, sistem pemesanan online, serta desain yang menarik dan ramah pengguna di semua perangkat.",
+    "proj3-title": "TechMart",
+    "proj3-desc":  "Aplikasi e-commerce toko teknologi berbasis React yang menampilkan produk-produk elektronik dengan UI modern, fitur filter produk, dan pengalaman belanja yang nyaman.",
+    "proj4-title": "Weather App",
+    "proj4-desc":  "Aplikasi cuaca real-time berbasis React yang menampilkan informasi cuaca terkini berdasarkan lokasi pengguna, dibangun sebagai proyek pembelajaran untuk mendalami React dan integrasi API.",
     "btn-demo":   "Lihat Demo",
 
     // CONTACT
@@ -180,6 +184,10 @@ const translations = {
     "proj1-desc":  "The official website of Kasih Paramitha School featuring academic information, activity gallery, and the latest school news and updates.",
     "proj2-title": "Burger Restaurant Website",
     "proj2-desc":  "A burger restaurant website featuring an interactive menu, online ordering system, and an attractive, user-friendly design across all devices.",
+    "proj3-title": "TechMart",
+    "proj3-desc":  "A React-based e-commerce app for a tech store, featuring electronics products with a modern UI, product filtering, and a smooth shopping experience.",
+    "proj4-title": "Weather App",
+    "proj4-desc":  "A real-time weather application built with React that displays current weather information based on the user's location — built as a learning project to deepen React skills and API integration.",
     "btn-demo":    "Live Demo",
 
     // CONTACT
